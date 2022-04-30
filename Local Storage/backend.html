@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <style>
+        h1{
+            color: red;
+            text-align: center;
+        }
+        #lol{
+            background-color: rgb(216, 19, 78);
+            color: white;
+            padding: 5px 10px 5px 10px;
+            border-radius: 7px;
+            border: 0px;
+        }
+        #investor_form{
+          display: block;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Backend</h1>
+    <form id="investor_form">
+        <input id="URL" type="text" placeholder="Enter URL here" >
+    <input id="name" type="text" placeholder="Enter Investors Name here">
+    <input type="text" id="role" placeholder="Enter Investors role here">
+    <input id="logo" type="text" placeholder="Enter Company logo here">
+    <input id="lol" type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#investor_form").addEventListener("submit",investors);
+
+
+    function investors(){
+        event.preventDefault();
+        //in place of if else condition next line present very cool method 
+        var investorArr = JSON.parse(localStorage.getItem("investorsData"))||[] ;
+
+        var investorsObj={
+            investorImg : investor_form.URL.value,
+            investorName : investor_form.name.value,
+            investorRole : investor_form.role.value,
+            investorLogo : investor_form.logo.value,
+        };
+
+        investorArr.push(investorsObj);
+        localStorage.setItem("investorsData",JSON.stringify(investorArr));
+    }
+</script>
